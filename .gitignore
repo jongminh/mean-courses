@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# temp files
+/backend/images
+
 # dependencies
 /node_modules
 

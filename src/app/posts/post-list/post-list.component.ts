@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 
-import { Post } from '../post.model';
-import { PostsService } from '../posts.service';
-import { PageEvent } from '@angular/material';
+import { Post } from "../post.model";
+import { PostsService } from "../posts.service";
+import { PageEvent } from "@angular/material";
 
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  selector: "app-post-list",
+  templateUrl: "./post-list.component.html",
+  styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit, OnDestroy {
   // posts = [
@@ -16,7 +16,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   //   { title: 'Second post', content: 'This is the second post\'s content' },
   //   { title: 'Third post', content: 'This is the third post\'s content' }
   // ];
-  posts: Post[]  = [];
+  posts: Post[] = [];
   isLoading = false;
   totalPosts = 0;
   postsPerPage = 2;
@@ -34,8 +34,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
-    this.postSub = this.postsService.getPostUpdatedListener()
-      .subscribe( (postData: {posts: Post[], postCount: number }) => {
+    this.postSub = this.postsService
+      .getPostUpdatedListener()
+      .subscribe((postData: { posts: Post[]; postCount: number }) => {
         this.isLoading = false;
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
@@ -43,7 +44,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(postId: string) {
-    this.postsService.deletePost(postId).subscribe( () => {
+    this.postsService.deletePost(postId).subscribe(() => {
       this.postsService.getPosts(this.postsPerPage, this.currentPage);
     });
   }
