@@ -9,7 +9,9 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 const connUrl =
-  "mongodb+srv://jason:toErCOtlccxA6jTK@cluster0-yelie.mongodb.net/node-angular?";
+  "mongodb+srv://jason:" +
+  process.env.MONGO_ATLAS_PW +
+  "@cluster0-yelie.mongodb.net/node-angular?";
 mongoose
   .connect(connUrl)
   .then(() => {
