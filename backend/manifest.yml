@@ -1,13 +1,13 @@
 ---
 applications:
-- name: mean-course-backend-jh
+- name: mean-course-integrated-jh
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   memory: 256M
   routes:
-  - route: mean-course-backend-jh.cfapps.io
+  - route: mean-course-integrated-jh.cfapps.io
   command: node server.js
   timeout: 60
   env:
-    MONGO_ATLAS_USER: username
-    MONGO_ATLAS_PW: password
+    MONGO_ATLAS_PW: pw
+    MONGO_ATLAS_USER: user
     JWT_KEY: secret_this_should_be_longer
