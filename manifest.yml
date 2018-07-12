@@ -1,0 +1,8 @@
+---
+applications:
+- name: mean-course-frontend-jh
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+  memory: 256M
+  routes:
+  - route: mean-course-frontend-jh.cfapps.io
+  timeout: 60

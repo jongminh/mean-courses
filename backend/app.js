@@ -9,7 +9,9 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 const connUrl =
-  "mongodb+srv://jason:" +
+  "mongodb+srv://" +
+  process.env.MONGO_ATLAS_USER +
+  ":" +
   process.env.MONGO_ATLAS_PW +
   "@cluster0-yelie.mongodb.net/node-angular?";
 mongoose
@@ -24,7 +26,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
+app.use("/images", express.static(path.join("images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
